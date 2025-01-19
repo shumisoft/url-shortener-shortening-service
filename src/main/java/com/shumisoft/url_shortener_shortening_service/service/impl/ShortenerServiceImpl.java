@@ -3,8 +3,6 @@ package com.shumisoft.url_shortener_shortening_service.service.impl;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import javax.swing.text.html.HTML;
-
 import org.springframework.stereotype.Service;
 
 import com.shumisoft.url_shortener_shortening_service.entity.UrlMap;
