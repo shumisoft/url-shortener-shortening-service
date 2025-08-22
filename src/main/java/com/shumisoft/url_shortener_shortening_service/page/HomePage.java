@@ -96,16 +96,16 @@ public class HomePage {
         <script>
           (function() {
             var map = {
-              "https://url-shortener.ritwikrajsingh.com": "https://ritwikrajsingh.com",
-              "https://url-shortener.dipanshushukla.com": "https://dipanshushukla.com",
-              "http://localhost:3000": "http://localhost:3000"
+              "url-shortener.ritwikrajsingh.com": "https://ritwikrajsingh.com",
+              "url-shortener.dipanshushukla.com":  "https://dipanshushukla.com",
+              "localhost":                          "http://localhost:3000"
             };
 
             var host = map[window.location.hostname];
-            if (!host) return; // unknown domain — render nothing
+            if (!host) return;
 
             var s = document.createElement("script");
-            s.src  = host + "/badge.js";
+            s.src = host + "/badge.js";
             s.setAttribute("data-host",     host);
             s.setAttribute("data-position", "60");
             s.setAttribute("data-type",     "regular");
