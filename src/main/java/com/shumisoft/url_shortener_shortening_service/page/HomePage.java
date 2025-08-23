@@ -37,6 +37,7 @@ public class HomePage {
             border-radius: 8px;
             margin-bottom: 1rem;
             font-size: 0.95rem;
+            box-sizing: border-box;
           }
           button {
             background: #2563eb;
