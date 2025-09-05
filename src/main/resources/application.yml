@@ -1,3 +1,14 @@
 spring:
     application:
         name: url-shortener-shortening-service
+    config:
+        import: "consul:"
+
+server:
+    port: 1337
+
+spring.cloud.consul:
+    host: ${CONSUL_HOST}
+    port: ${CONSUL_PORT}
+    config:
+        format: yaml
