@@ -12,3 +12,8 @@ spring.cloud.consul:
     port: ${CONSUL_PORT}
     config:
         format: yaml
+    discovery:
+        tags:
+            - traefik.enable=true
+            - traefik.http.routers.shortener.rule=Host(`url-shortener.dipanshushukla.com`) && (Path(`/`) || PathPrefix(`/`))
+            - traefik.http.services.shortener.loadbalancer.server.port=1337
