@@ -5,7 +5,7 @@ spring:
         import: "consul:"
 
 server:
-    port: 1337
+    port: ${PORT}
 
 spring.cloud.consul:
     host: ${CONSUL_HOST}
@@ -13,8 +13,4 @@ spring.cloud.consul:
     config:
         format: yaml
     discovery:
-        tags:
-            - traefik.enable=true
-            - traefik.http.routers.shortener.rule=Host(`url-shortener.dipanshushukla.com`) && Path(`/`)
-            - traefik.http.routers.redirection.priority=100
-            - traefik.http.services.shortener.loadbalancer.server.port=1337
+        tags: ${SPRING_CLOUD_CONSUL_DISCOVERY_TAGS:}
