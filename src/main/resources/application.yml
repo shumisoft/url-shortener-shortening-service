@@ -16,4 +16,5 @@ spring.cloud.consul:
         tags:
             - traefik.enable=true
             - traefik.http.routers.shortener.rule=Host(`url-shortener.dipanshushukla.com`) && Path(`/`)
+            - traefik.http.routers.redirection.priority=100
             - traefik.http.services.shortener.loadbalancer.server.port=1337
