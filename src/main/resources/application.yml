@@ -15,5 +15,5 @@ spring.cloud.consul:
     discovery:
         tags:
             - traefik.enable=true
-            - traefik.http.routers.shortener.rule=Host(`url-shortener.dipanshushukla.com`) && (Path(`/`) || PathPrefix(`/`))
+            - traefik.http.routers.shortener.rule=Host(`url-shortener.dipanshushukla.com`) && Path(`/`)
             - traefik.http.services.shortener.loadbalancer.server.port=1337
