@@ -99,7 +99,8 @@ public class HomePage {
             var map = {
               "url-shortener.ritwikrajsingh.com": "https://ritwikrajsingh.com",
               "url-shortener.dipanshushukla.com":  "https://dipanshushukla.com",
-              "localhost":                          "http://localhost:3000"
+              "localhost":                          "http://localhost:3000",
+              "127.0.0.1":                          "http://localhost:3000"
             };
 
             var host = map[window.location.hostname];
