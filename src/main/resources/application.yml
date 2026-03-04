@@ -1,16 +1,24 @@
+server:
+    port: ${PORT}
+
 spring:
     application:
         name: url-shortener-shortening-service
     config:
         import: "consul:"
 
-server:
-    port: ${PORT}
+    cloud:
+        consul:
+            host: ${CONSUL_HOST}
+            port: ${CONSUL_PORT}
+            config:
+                format: yaml
+            discovery:
+                tags: ${SPRING_CLOUD_CONSUL_DISCOVERY_TAGS:}
 
-spring.cloud.consul:
-    host: ${CONSUL_HOST}
-    port: ${CONSUL_PORT}
-    config:
-        format: yaml
-    discovery:
-        tags: ${SPRING_CLOUD_CONSUL_DISCOVERY_TAGS:}
+                prefer-ip-address: true
+                instance-id: ${spring.application.name}-${spring.cloud.client.ip-address}-${random.value}
+
+                health-check-timeout: 5s
+                health-check-interval: 15s
+                health-check-critical-timeout: 30m

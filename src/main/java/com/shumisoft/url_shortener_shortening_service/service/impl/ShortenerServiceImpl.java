@@ -11,6 +11,7 @@ import com.shumisoft.url_shortener_shortening_service.entity.UrlMap;
 import com.shumisoft.url_shortener_shortening_service.exception.InvalidUrlException;
 import com.shumisoft.url_shortener_shortening_service.page.HomePage;
 import com.shumisoft.url_shortener_shortening_service.repository.UrlMapRepository;
+import com.shumisoft.url_shortener_shortening_service.service.BloomFilterService;
 import com.shumisoft.url_shortener_shortening_service.service.ShortenerService;
 import com.shumisoft.url_shortener_shortening_service.utils.IdGenerator;
 
@@ -25,6 +26,8 @@ public class ShortenerServiceImpl implements ShortenerService {
 
     private IdGenerator generator;
     private UrlMapRepository repository;
+
+    private BloomFilterService bloomFilterService;
 
     @Override
     public String getNewB62ID() {
@@ -51,8 +54,12 @@ public class ShortenerServiceImpl implements ShortenerService {
             throw new InvalidUrlException("Invalid Url");
         }
 
-        UrlMap urlMap = UrlMap.builder().b62encoded(getNewB62ID()).url(url).build();
+        String newB62ID = getNewB62ID();
+
+        UrlMap urlMap = UrlMap.builder().b62encoded(newB62ID).url(url).build();
         urlMap = repository.save(urlMap);
+
+        bloomFilterService.add(newB62ID);
 
         return urlMap.getB62encoded();
     }
